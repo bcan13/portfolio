@@ -1,6 +1,100 @@
+:root {
+  --color-accent: #8EACCD;
+}
+
 body {
     /* Set line height to 1.5 times the font size
          and use the OS’s UI font as the website font
        */
     font: 100%/1.5 system-ui;
+    max-width: 100ch;
+    margin-left: auto;
+    margin-right: auto;
+    margin-inline: max(1em, (100% - 100ch) / 2);
   }
+
+ul, li {
+  display: contents;
+}
+
+nav {
+  display: flex;
+  margin-bottom: 0.5em;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: oklch(80% 3% 200);
+}
+
+nav a {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 0.5em;
+}
+
+nav a:hover {
+  padding-bottom: 0.1em;
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+  border-bottom: 0.4rem solid var(--color-accent);
+}
+.current {
+  border-bottom-width: 0.4em;
+  border-bottom-style: solid;
+  border-bottom-color: oklch(80% 3% 200);
+  padding-bottom: 0.1em;
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+input {
+  font: inherit;
+}
+
+textarea {
+  font: inherit;
+}
+
+label {
+  display: grid;
+  grid-template-columns: subgrid;
+  font: inherit;
+  grid-column: 1 / -1;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+button {
+  font: inherit;
+  grid-column: 1 / -1;
+  gap: 1em;
+}
+
+.projects{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  gap: 1em;
+}
+
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 1em;
+}
+
+h2 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 400%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
