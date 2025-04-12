@@ -3,15 +3,11 @@
 }
 
 body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
-    font: 100%/1.5 system-ui;
-    max-width: 100ch;
-    margin-left: auto;
-    margin-right: auto;
-    margin-inline: max(1em, (100% - 100ch) / 2);
-  }
+  font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin: 0 auto;
+  margin-inline: max(1em, (100% - 100ch) / 2);
+}
 
 ul, li {
   display: contents;
@@ -20,9 +16,7 @@ ul, li {
 nav {
   display: flex;
   margin-bottom: 0.5em;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: oklch(80% 3% 200);
+  border-bottom: 1px solid oklch(80% 3% 200);
 }
 
 nav a {
@@ -38,10 +32,9 @@ nav a:hover {
   background-color: oklch(from var(--color-accent) 95% 5% h);
   border-bottom: 0.4rem solid var(--color-accent);
 }
+
 .current {
-  border-bottom-width: 0.4em;
-  border-bottom-style: solid;
-  border-bottom-color: oklch(80% 3% 200);
+  border-bottom: 0.4em solid oklch(80% 3% 200);
   padding-bottom: 0.1em;
 }
 
@@ -97,4 +90,85 @@ h1 {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #000;
+  margin-bottom: 0.5em;
+}
+
+header p {
+  font-size: 1rem;
+  color: #333;
+}
+
+header a {
+  color: #000;
+  text-decoration: none;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+section {
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #ccc;
+}
+
+section h2 {
+  font-size: 1.8rem;
+  color: #000;
+  margin-bottom: 0.5em;
+}
+
+article h3 {
+  font-size: 1.2rem;
+  color: #000;
+  margin-bottom: 0.3em;
+}
+
+article p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0.5em 0;
+}
+
+article ul {
+  margin: 0.5em 0 0 1.5em;
+  list-style-type: disc;
+}
+
+article ul li {
+  margin-bottom: 0.5em;
+  color: #555;
+}
+
+ul li strong {
+  color: #000;
+}
+
+section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+section ul li {
+  margin-bottom: 0.5em;
+}
+
+section ul li strong {
+  color: #000;
 }
