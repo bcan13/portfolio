@@ -5,8 +5,8 @@ function $$(selector, context = document) {
 }
 
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-  ? "/"                  // Local server
-  : "/website/";         // GitHub Pages repo name
+  ? "/"
+  : "/portfolio/";
 
 
 // const navLinks = $$("nav a");
