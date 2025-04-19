@@ -4,29 +4,10 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-  ? "/"
-  : "/portfolio/";
-
-
-// const navLinks = $$("nav a");
-
-// let currentLink = navLinks.find(
-//     (a) => a.host === location.host && a.pathname === location.pathname,
-//   );
-  
-// currentLink?.classList.add('current');
-
-
-{/* <nav>
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="index.html">Contact</a></li>
-            <li><a href="../projects/index.html">Projects</a></li>
-            <li><a href="https://github.com/bcan13/" target="_blank">Profile</a></li>
-            <li><a href="../resume/index.html">Resume</a></li>
-        </ul>
-    </nav> */}
+const BASE_PATH =
+  location.hostname === "localhost" || location.hostname === "127.0.0.1"
+    ? "/"
+    : "/portfolio/";
 
 let pages = [
     { url: '', title: 'Home' },
@@ -43,7 +24,7 @@ for (let page of pages) {
     let url = page.url;
     let title = page.title;
 
-    url = !url.startsWith('http') ? BASE_PATH + url : url;
+    url = !url.startsWith("http") ? BASE_PATH + url : url;
 
     let a = document.createElement('a');
     a.href = url;
@@ -51,11 +32,12 @@ for (let page of pages) {
 
     if (a.host === location.host && a.pathname === location.pathname) {
         a.classList.add('current');
-      }
+    }
 
-    if (a.host !== location.host){
+    if (a.host !== location.host) {
         a.target = '_blank';
-      }
+        a.rel = "noopener noreferrer";
+    }
 
     nav.append(a);
 }
