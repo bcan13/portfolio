@@ -2,6 +2,10 @@
   --color-accent: #8EACCD;
 }
 
+html {
+  color-scheme: light dark;
+}
+
 body {
   font: 100%/1.5 system-ui;
   max-width: 100ch;
@@ -14,9 +18,12 @@ ul, li {
 }
 
 nav {
+  --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
-  margin-bottom: 0.5em;
-  border-bottom: 1px solid oklch(80% 3% 200);
+  margin-bottom: 0.2em;
+  border-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--border-color);
 }
 
 nav a {
@@ -29,7 +36,7 @@ nav a {
 
 nav a:hover {
   padding-bottom: 0.1em;
-  background-color: oklch(from var(--color-accent) 95% 5% h);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   border-bottom: 0.4rem solid var(--color-accent);
 }
 
@@ -171,4 +178,10 @@ section ul li {
 
 section ul li strong {
   color: #000;
+}
+
+label.color-scheme {
+  position: absolute;
+  top: 1em;
+  right: 1em;
 }
