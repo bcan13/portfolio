@@ -173,3 +173,21 @@ label.color-scheme {
   top: 1em;
   right: 1em;
 }
+
+dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+
+dt {
+  grid-row: 1;
+  font-size: 0.85rem; /* smaller titles */      /* optional: lighter text color */
+}
+
+dd {
+  grid-row: 2;
+  font-size: 1.5rem;  /* bigger numbers */
+  font-weight: bold;  /* optional: makes numbers stand out more */
+  margin: 0;
+}
