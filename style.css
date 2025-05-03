@@ -191,3 +191,75 @@ dd {
   font-weight: bold;  /* optional: makes numbers stand out more */
   margin: 0;
 }
+
+#projects-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
+}
+
+/* Legend Styling */
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr)); /* Responsive grid layout */
+  gap: 1em; /* Space between legend items */
+  border: 1px solid #ccc; /* Light border around the legend */
+  padding: 1em; /* Space inside the legend */
+  margin: 1em 0; /* Space around the legend */
+  border-radius: 0.5em; /* Rounded corners */
+}
+
+.legend li {
+  display: flex;
+  align-items: center; /* Align swatch and text vertically */
+  gap: 0.5em; /* Space between swatch and text */
+  font-size: 0.9rem; /* Slightly smaller text */
+}
+
+.legend .swatch {
+  display: inline-block;
+  width: 1em; /* Width of the swatch */
+  height: 1em; /* Height of the swatch */
+  background-color: var(--color); /* Use the color variable */
+  border-radius: 0.25em; /* Slight rounding for the swatch */
+  border: 1px solid #ccc; /* Optional border for better visibility */
+}
+
+/* Container for Pie Chart and Legend */
+.container {
+  display: flex; /* Flex layout for side-by-side alignment */
+  align-items: center; /* Vertically align items */
+  gap: 2em; /* Space between the pie chart and legend */
+  margin: 2em 0; /* Space around the container */
+}
+
+.container svg {
+  flex-shrink: 0; /* Prevent the pie chart from shrinking */
+  max-width: 50%; /* Limit the width of the pie chart */
+}
+
+.container .legend {
+  flex: 1; /* Allow the legend to take up remaining space */
+}
+
+&:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+path {
+  transition: 300ms;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+}
+
+path {
+  cursor: pointer;
+}

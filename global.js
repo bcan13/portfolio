@@ -85,15 +85,18 @@ export async function fetchJSON(url) {
   }
 }
 
-export function renderProjects(project, containerElement, headingLevel = 'h2') {  
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
   containerElement.innerHTML = '';
 
-  project.forEach((project) => {
+  projects.forEach((project) => {
     const article = document.createElement('article');
     article.innerHTML = `
-    <h3>${project.title}</h3>
-    <img src="${project.image}" alt="${project.title}">
-    <p>${project.description}</p>
+      <${headingLevel}>${project.title}</${headingLevel}>
+      <img src="${project.image}" alt="${project.title}">
+      <div>
+      <p>${project.description}</p>
+      <p>${project.year}</p>
+      <\div>
     `;
     containerElement.appendChild(article);
   });
