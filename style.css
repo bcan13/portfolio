@@ -302,6 +302,9 @@ circle {
   transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
+  @starting-style {
+  r: 0;
+}
 }
 
 circle:hover {
@@ -329,4 +332,125 @@ dl.info[hidden]:not(:hover, :focus-within) {
 
 circle.selected {
   fill: #ff6b6b;
+}
+
+#files {
+  display: grid;
+  grid-template-columns: 1fr; /* Files will stack vertically */
+  gap: 1em; /* Space between file entries */
+}
+
+.file-entry {
+  display: grid; /* Use grid within each file entry */
+  grid-template-columns: minmax(250px, auto) 1fr; /* Fixed minimum width for file info, rest for dots */
+  grid-template-rows: auto auto; /* Two rows: one for header, one for line count */
+  grid-template-areas:
+    "header dots"
+    "count  dots";
+  gap: 0.5em 1em; /* Vertical gap between rows, Horizontal gap between columns */
+  align-items: start; /* Align items to the top */
+}
+
+.file-header {
+  grid-area: header;
+  display: flex; /* Use flexbox within header for file name and dots */
+  align-items: center; /* Align file name and dots vertically */
+  gap: 1em; /* Space between file name and dots */
+}
+
+.file-name {
+  /* No grid-area needed if within .file-header */
+  font-weight: bold;
+  /* Removed flex-shrink: 0; */
+}
+
+.line-count {
+  grid-area: count;
+  font-size: 0.9em;
+  color: #666;
+  text-align: left; /* Align the line count to the left */
+  margin-left: 1em; /* Indent line count */
+}
+
+.loc-dots {
+  grid-area: dots;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: start; /* Align dots to the top */
+  gap: 0.15em;
+  margin-top: 0; /* Ensure no extra top margin */
+  /* flex: 1; Removed flex: 1 as grid handles the width */
+}
+
+.loc {
+  width: 8px;
+  height: 8px;
+  /* Removed background-color to allow inline style from D3 to take effect */
+  border-radius: 50%;
+  margin: 1px; /* Space between dots */
+}
+
+/* Ensure no conflicting styles from previous attempts */
+#files > div,
+#files dt,
+#files dd,
+.file-header span /* Target the span inside file-header if needed */ {
+  /* Remove previous grid/flexbox settings that conflict */
+  display: unset !important; /* Use !important to override potential inline styles */
+  grid-column: unset !important;
+  grid-row: unset !important;
+  margin: unset !important;
+  padding: unset !important;
+}
+
+.file-name {
+   display: unset !important; /* Ensure file-name doesn't have unexpected display */
+   font-weight: bold !important;
+}
+
+#files dd.line-count { /* Target the line-count specifically if needed */
+  text-align: left !important;
+  margin-left: 1em !important;
+}
+
+#scrolly-1 {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  /* Adjust height if needed for scrolling behavior in flex container */
+  /* height: 100vh; Remove if causing issues */
+}
+
+#scatter-story {
+  position: relative;
+  flex: 1; /* Allow story to take up space */
+  overflow-y: auto; /* Make the story section scrollable */
+  /* Add padding-right to avoid scrollbar overlapping content */
+  padding-right: 1rem; 
+}
+
+#scatter-plot {
+  position: sticky;
+  top: 0; /* Stick to the top of the viewport */
+  left: initial; /* Ensure left is not forcing position */
+  bottom: auto;
+  height: 100vh; /* Make it fill the viewport height to ensure sticky works and visualizations are visible */
+  flex: 1; /* Allow plot to take up space */
+  display: flex; /* Use flexbox for internal layout if needed */
+  flex-direction: column; /* Stack internal elements */
+  align-items: center; /* Center content horizontally */
+  justify-content: flex-start; /* Align content to the top */
+}
+
+/* Adjustments for elements inside scatter-plot if needed */
+#scatter-plot #chart, 
+#scatter-plot #files {
+  /* Ensure these elements take up appropriate space or have necessary margins */
+  margin-top: 1em; /* Add some space below the sticky top */
+}
+
+/* Ensure scatter plot specific elements don't interfere with sticky positioning */
+#scatter-plot > h2, #scatter-plot > dl, #scatter-plot > p {
+  /* Adjust margins or positioning if they are causing issues */
 }

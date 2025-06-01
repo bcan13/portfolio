@@ -17,7 +17,25 @@
         Meta
     </h1>
 
-    <div id="stats"></div>
+    <div style="display: flex; align-items: baseline;">
+  <label
+    style="flex: 1; display: flex; align-items: baseline"
+    >Show commits until:
+    <input
+      type="range"
+      id="commit-progress"
+      min="0"
+      max="100"
+      value="100"
+      style="accent-color: #007bff; flex: 1"
+    />
+  </label>
+</div>
+<div style="text-align: right;">
+  <time id="commit-time"></time>
+</div>
+
+<div id="stats"></div>
 
     <h2 style="padding-bottom: 1em;">Commits by time of day</h2>
     <div id="chart"></div>
@@ -34,3 +52,42 @@
       </dl>
       <p id="selection-count">No commits selected</p>
       <dl id="language-breakdown" class="stats"></dl>
+      
+  <!-- Add file list display here -->
+<dl id="files">
+  <!-- we want the following structure for each file:
+  <div>
+    <dt>
+      <code>{file.name}</code>
+    </dt>
+    <dd>{file.lines.length} lines</dd>
+  </div>
+  -->
+</dl>
+
+  <!-- Start Scrollytelling Structure -->
+  <div id="scrolly-1">
+    <div id="scatter-story"></div> <!-- Filler text will be generated here -->
+    <div id="scatter-plot">
+      <!-- Scatter plot and related elements go here -->
+      <h2 style="padding-bottom: 1em;">Commits by time of day</h2>
+      <div id="chart"></div>
+      <dl id="commit-tooltip" class="info tooltip" hidden>
+          <dt>Commit</dt>
+          <dd>
+            <a href="" id="commit-link" target="_blank"></a>
+          </dd>
+
+          <dt>Date</dt>
+          <dd id="commit-date"></dd>
+
+          <!-- Add: Time, author, lines edited -->
+        </dl>
+        <p id="selection-count">No commits selected</p>
+        <dl id="language-breakdown" class="stats"></dl>
+    </div>
+  </div>
+  <!-- End Scrollytelling Structure -->
+
+</body>
+</html>
